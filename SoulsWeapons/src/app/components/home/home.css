@@ -1,0 +1,57 @@
+.intro-container {
+  height: 100vh;
+  background: radial-gradient(circle at center, #0d0d0d 0%, #000000 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.intro-title {
+  font-size: 4rem;
+  color: #e0c984;
+  text-shadow: 0 0 10px #e0c984;
+  animation: float 3s infinite ease-in-out;
+  margin-bottom: 50px;
+  font-family: 'Cinzel', serif;
+}
+
+.play-button {
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  color: #fff;
+  background-color: #8b5d33;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  animation: fadeInUp 1.5s ease forwards, float 3s infinite ease-in-out;
+  box-shadow: 0 0 15px #8b5d33;
+  transition: transform 0.3s;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

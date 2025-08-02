@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+:host {
+  display: block;
+  background-image: url('assets/fondito.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  background-image: url('assets/fondito.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
