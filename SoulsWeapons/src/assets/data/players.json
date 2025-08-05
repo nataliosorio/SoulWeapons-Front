@@ -1,0 +1,12 @@
+[
+  { "id": 1, "nombre": "Artorias del Abismo" },
+  { "id": 2, "nombre": "Caballero de Havel" },
+  { "id": 3, "nombre": "Solaire de Astora" },
+  { "id": 4, "nombre": "Gwyn, Señor de la Ceniza" },
+  { "id": 5, "nombre": "Ornstein el Matadragones" },
+  { "id": 6, "nombre": "Smough el Verdugo" },
+  { "id": 7, "nombre": "Velka, Diosa del Pecado" },
+  { "id": 8, "nombre": "Manus, Padre del Abismo" },
+  { "id": 9, "nombre": "Seath el Descamado" },
+  { "id": 10, "nombre": "Nito, el Rey Cementerio" }
+]

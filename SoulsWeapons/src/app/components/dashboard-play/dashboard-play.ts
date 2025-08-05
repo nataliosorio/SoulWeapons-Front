@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import PlayerData from '../../../assets/data/players.json';
+import { HttpClient } from '@angular/common/http';
+import { Player } from './player.interface';
+
 
 @Component({
   selector: 'app-dashboard-play',
@@ -10,39 +15,47 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './dashboard-play.css'
 })
 export class DashboardPlay {
-  playerCount: number = 2;
-  availablePlayers: string[] = ['Ana', 'Luis', 'Carlos', 'María', 'Juan'];
-  selectedPlayers: string[] = [];
+
+   playerCount: number = 2;
+
+   availablePlayers: Player[] = [];
+selectedPlayers: Player[] = [];
+
+  showAddForm: boolean = false;
+  newPlayerName: string = '';
+
+  constructor(private http: HttpClient, private router: Router) {}
+
+ngOnInit(): void {
+  this.http.get<Player[]>('assets/data/players.json').subscribe((data) => {
+    this.availablePlayers = data;
+  });
+}
 
   onPlayerCountChange() {
     this.selectedPlayers = [];
   }
 
-  addPlayer(player: string) {
-    if (!this.selectedPlayers.includes(player) && this.selectedPlayers.length < this.playerCount) {
-      this.selectedPlayers.push(player);
-    }
+ addPlayer(player: Player) {
+  const yaExiste = this.selectedPlayers.some(p => p.id === player.id);
+
+  if (!yaExiste && this.selectedPlayers.length < this.playerCount) {
+    this.selectedPlayers.push(player);
   }
-
-  startGame() {
-    const gameData = {
-      cantidad: this.playerCount,
-      jugadores: this.selectedPlayers
-    };
-    // console.log('🎮 Datos del juego:', JSON.stringify(gameData));
-    console.log('🎮 Datos del juego:',gameData);
-
-  }
-
-
-  showAddForm: boolean = false;
-newPlayerName: string = '';
+}
 
 confirmAddNewPlayer() {
   const name = this.newPlayerName.trim();
-  console.log(name);
-  if (name && !this.availablePlayers.includes(name)) {
-    this.availablePlayers.push(name);
+
+  const yaExiste = this.availablePlayers.some(p => p.nombre.toLowerCase() === name.toLowerCase());
+
+  if (name && !yaExiste) {
+    const nuevoJugador: Player = {
+      id: this.availablePlayers.length + 1, // o usa otro generador
+      nombre: name
+    };
+
+    this.availablePlayers.push(nuevoJugador);
     this.newPlayerName = '';
     this.showAddForm = false;
   } else {
@@ -50,5 +63,22 @@ confirmAddNewPlayer() {
   }
 }
 
+
+startGame() {
+  const gameData = {
+    cantidad: this.playerCount,
+    jugadores: this.selectedPlayers
+  };
+
+  localStorage.setItem('datosJuego', JSON.stringify(gameData));
+
+  this.router.navigate(['/playGame']);
+}
+
+
+
+  viewArmas() {
+    this.router.navigate(['/armas']);
+  }
 
 }

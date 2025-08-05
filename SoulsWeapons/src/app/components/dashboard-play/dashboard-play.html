@@ -1,45 +1,46 @@
-
-<div class="container">
-  <h2>Configuración del Juego</h2>
+<button (click)="viewArmas()">Ver armas</button>
+<div class="config-container animate-fade-in">
+  <h2 class="title">⚔️ Configuración del Juego ⚔️</h2>
 
   <form>
-    <label for="playerCount">Cantidad de jugadores:</label>
-    <input type="number" id="playerCount" [(ngModel)]="playerCount" name="playerCount" min="2" max="7" (change)="onPlayerCountChange()" />
+    <label for="playerCount" class="title2">Cantidad de jugadores:</label>
+    <input type="number" id="playerCount" [(ngModel)]="playerCount" name="playerCount" min="2" max="7" (change)="onPlayerCountChange()"  />
 
     <div *ngIf="playerCount">
-        <div *ngIf="showAddForm" class="add-player-form">
-            <input [(ngModel)]="newPlayerName" name="newPlayerName" placeholder="Nombre del nuevo jugador" />
-
-        <!-- <input type="text" [(ngModel)]="newPlayerName" placeholder="Nombre del nuevo jugador" /> -->
-        <button type="button" (click)="confirmAddNewPlayer()">Confirmar</button>
-        <button type="button" (click)="showAddForm = false">Cancelar</button>
+      <div *ngIf="showAddForm" class="add-player-form animate-slide-in">
+        <input [(ngModel)]="newPlayerName" name="newPlayerName" placeholder="Nombre del nuevo jugador" />
+        <div class="btn-group">
+          <button type="button" (click)="confirmAddNewPlayer()">✔ Confirmar</button>
+          <button type="button" (click)="showAddForm = false">✖ Cancelar</button>
         </div>
+      </div>
 
-        <button type="button" (click)="showAddForm = true" [disabled]="availablePlayers.length >= 20">Agregar nuevo jugador</button>
-      <h3>Jugadores disponibles</h3>
+      <button class="add-btn" type="button" (click)="showAddForm = true" [disabled]="availablePlayers.length >= 20">
+        ➕ Agregar nuevo jugador
+      </button>
+
+      <h3 class="title2">🧝‍♂️ Jugadores disponibles</h3>
       <table>
-        <tr>
+        <!-- <tr>
           <th>Nombre</th>
           <th>Acción</th>
-        </tr>
+        </tr> -->
         <tr *ngFor="let player of availablePlayers">
-          <td>{{ player }}</td>
-          <td>
-            <button type="button" (click)="addPlayer(player)" [disabled]="selectedPlayers.includes(player) || selectedPlayers.length >= playerCount">
-              Agregar
-            </button>
+          <td>{{ player.nombre }}</td>
+           <td>
+            <button (click)="addPlayer(player)">Agregar</button>
           </td>
         </tr>
       </table>
 
-      <h3>Jugadores seleccionados</h3>
+      <h3 class="title2">🛡 Jugadores seleccionados</h3>
       <ul>
-        <li *ngFor="let p of selectedPlayers">{{ p }}</li>
+        <li *ngFor="let p of selectedPlayers">{{ p.nombre }}</li>
       </ul>
     </div>
 
-    <button type="button" (click)="startGame()" [disabled]="selectedPlayers.length < playerCount">Iniciar juego</button>
+    <button class="start-btn" type="button" (click)="startGame()" [disabled]="selectedPlayers.length < playerCount">
+      🔥 Iniciar juego
+    </button>
   </form>
 </div>
-
-

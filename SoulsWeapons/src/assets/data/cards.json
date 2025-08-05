@@ -1,0 +1,730 @@
+[
+  {
+    "id": 1,
+    "nombre": "Espada Larga",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 65,
+      "velocidad": 75,
+      "alcance": 70,
+      "durabilidad": 80,
+      "peso": 35,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Claymore",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 85,
+      "velocidad": 50,
+      "alcance": 85,
+      "durabilidad": 90,
+      "peso": 70,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Daga de Bandido",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 45,
+      "velocidad": 95,
+      "alcance": 30,
+      "durabilidad": 60,
+      "peso": 15,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 4,
+    "nombre": "Hacha de Batalla",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 90,
+      "velocidad": 45,
+      "alcance": 55,
+      "durabilidad": 85,
+      "peso": 65,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 5,
+    "nombre": "Lanza de Plata",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 70,
+      "velocidad": 65,
+      "alcance": 90,
+      "durabilidad": 75,
+      "peso": 45,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 6,
+    "nombre": "Arco Largo",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 60,
+      "velocidad": 40,
+      "alcance": 100,
+      "durabilidad": 70,
+      "peso": 30,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 7,
+    "nombre": "Martillo de Guerra",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 95,
+      "velocidad": 35,
+      "alcance": 60,
+      "durabilidad": 95,
+      "peso": 85,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 8,
+    "nombre": "Katana de Uchigatana",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 75,
+      "velocidad": 85,
+      "alcance": 65,
+      "durabilidad": 65,
+      "peso": 40,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 9,
+    "nombre": "Bastón del Hechicero",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 80,
+      "velocidad": 60,
+      "alcance": 75,
+      "durabilidad": 50,
+      "peso": 25,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 10,
+    "nombre": "Espadón Negro",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 100,
+      "velocidad": 30,
+      "alcance": 80,
+      "durabilidad": 85,
+      "peso": 90,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 11,
+    "nombre": "Cimitarra",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 55,
+      "velocidad": 90,
+      "alcance": 50,
+      "durabilidad": 70,
+      "peso": 25,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 12,
+    "nombre": "Lanza del Dragón",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 95,
+      "velocidad": 50,
+      "alcance": 95,
+      "durabilidad": 60,
+      "peso": 55,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 13,
+    "nombre": "Ballesta Pesada",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 85,
+      "velocidad": 25,
+      "alcance": 90,
+      "durabilidad": 80,
+      "peso": 60,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 14,
+    "nombre": "Daga de Parry",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 40,
+      "velocidad": 100,
+      "alcance": 25,
+      "durabilidad": 55,
+      "peso": 10,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 15,
+    "nombre": "Espada Flamberge",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 80,
+      "velocidad": 55,
+      "alcance": 75,
+      "durabilidad": 75,
+      "peso": 50,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 16,
+    "nombre": "Hacha Demoniaca",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 105,
+      "velocidad": 40,
+      "alcance": 50,
+      "durabilidad": 90,
+      "peso": 80,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 17,
+    "nombre": "Arco Compuesto",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 70,
+      "velocidad": 60,
+      "alcance": 95,
+      "durabilidad": 65,
+      "peso": 35,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 18,
+    "nombre": "Maza de Hierro",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 75,
+      "velocidad": 50,
+      "alcance": 45,
+      "durabilidad": 90,
+      "peso": 55,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 19,
+    "nombre": "Espada Cristalina",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 110,
+      "velocidad": 65,
+      "alcance": 70,
+      "durabilidad": 25,
+      "peso": 45,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 20,
+    "nombre": "Garra de Lobo",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 60,
+      "velocidad": 85,
+      "alcance": 35,
+      "durabilidad": 65,
+      "peso": 20,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 21,
+    "nombre": "Bastón de Llamas",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 85,
+      "velocidad": 55,
+      "alcance": 80,
+      "durabilidad": 45,
+      "peso": 30,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 22,
+    "nombre": "Espada del Caballero Negro",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 95,
+      "velocidad": 45,
+      "alcance": 75,
+      "durabilidad": 80,
+      "peso": 65,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 23,
+    "nombre": "Puñales Gemelos",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 50,
+      "velocidad": 95,
+      "alcance": 30,
+      "durabilidad": 60,
+      "peso": 20,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 24,
+    "nombre": "Lanza de Plata Divina",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 90,
+      "velocidad": 60,
+      "alcance": 85,
+      "durabilidad": 70,
+      "peso": 50,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 25,
+    "nombre": "Martillo del Titán",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 120,
+      "velocidad": 20,
+      "alcance": 55,
+      "durabilidad": 100,
+      "peso": 100,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 26,
+    "nombre": "Arco de Cazador",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 65,
+      "velocidad": 70,
+      "alcance": 85,
+      "durabilidad": 75,
+      "peso": 25,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 27,
+    "nombre": "Espada Maldita",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 100,
+      "velocidad": 70,
+      "alcance": 65,
+      "durabilidad": 40,
+      "peso": 45,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 28,
+    "nombre": "Alabarda",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 85,
+      "velocidad": 40,
+      "alcance": 100,
+      "durabilidad": 85,
+      "peso": 75,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 29,
+    "nombre": "Estoque",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 55,
+      "velocidad": 80,
+      "alcance": 70,
+      "durabilidad": 65,
+      "peso": 25,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 30,
+    "nombre": "Hacha Gigante",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 110,
+      "velocidad": 25,
+      "alcance": 60,
+      "durabilidad": 95,
+      "peso": 95,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 31,
+    "nombre": "Bastón de Hielo",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 75,
+      "velocidad": 65,
+      "alcance": 75,
+      "durabilidad": 55,
+      "peso": 30,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 32,
+    "nombre": "Cuchillo Arrojadizo",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 45,
+      "velocidad": 90,
+      "alcance": 60,
+      "durabilidad": 30,
+      "peso": 15,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 33,
+    "nombre": "Espada de Moonlight",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 105,
+      "velocidad": 60,
+      "alcance": 80,
+      "durabilidad": 60,
+      "peso": 55,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 34,
+    "nombre": "Lanza Alada",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 70,
+      "velocidad": 75,
+      "alcance": 85,
+      "durabilidad": 70,
+      "peso": 40,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 35,
+    "nombre": "Martillo del Caos",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 115,
+      "velocidad": 30,
+      "alcance": 50,
+      "durabilidad": 85,
+      "peso": 90,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 36,
+    "nombre": "Ballesta Ligera",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 60,
+      "velocidad": 70,
+      "alcance": 80,
+      "durabilidad": 70,
+      "peso": 35,
+      "rareza": "Común"
+    }
+  },
+  {
+    "id": 37,
+    "nombre": "Espada Curva",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 65,
+      "velocidad": 85,
+      "alcance": 55,
+      "durabilidad": 75,
+      "peso": 35,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 38,
+    "nombre": "Látigo Espinoso",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 55,
+      "velocidad": 75,
+      "alcance": 95,
+      "durabilidad": 50,
+      "peso": 30,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 39,
+    "nombre": "Bastón del Archimago",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 95,
+      "velocidad": 50,
+      "alcance": 85,
+      "durabilidad": 40,
+      "peso": 35,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 40,
+    "nombre": "Hacha de Ejecutor",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 100,
+      "velocidad": 35,
+      "alcance": 65,
+      "durabilidad": 90,
+      "peso": 80,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 41,
+    "nombre": "Daga Venenosa",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 50,
+      "velocidad": 90,
+      "alcance": 35,
+      "durabilidad": 55,
+      "peso": 20,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 42,
+    "nombre": "Arco del Cazador de Dragones",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 90,
+      "velocidad": 45,
+      "alcance": 100,
+      "durabilidad": 65,
+      "peso": 50,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 43,
+    "nombre": "Espada del Crepúsculo",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 85,
+      "velocidad": 70,
+      "alcance": 70,
+      "durabilidad": 70,
+      "peso": 45,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 44,
+    "nombre": "Tridente de Poseidón",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 80,
+      "velocidad": 60,
+      "alcance": 90,
+      "durabilidad": 75,
+      "peso": 55,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 45,
+    "nombre": "Maza de Plata",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 70,
+      "velocidad": 55,
+      "alcance": 50,
+      "durabilidad": 85,
+      "peso": 50,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 46,
+    "nombre": "Espada de Llamas",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 90,
+      "velocidad": 65,
+      "alcance": 65,
+      "durabilidad": 60,
+      "peso": 40,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 47,
+    "nombre": "Guja",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 75,
+      "velocidad": 50,
+      "alcance": 95,
+      "durabilidad": 80,
+      "peso": 60,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 48,
+    "nombre": "Espada Bastarda",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 80,
+      "velocidad": 60,
+      "alcance": 75,
+      "durabilidad": 85,
+      "peso": 55,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 49,
+    "nombre": "Ballesta del Asesino",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 75,
+      "velocidad": 80,
+      "alcance": 85,
+      "durabilidad": 50,
+      "peso": 30,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 50,
+    "nombre": "Martillo de Tormenta",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 105,
+      "velocidad": 40,
+      "alcance": 55,
+      "durabilidad": 90,
+      "peso": 85,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 51,
+    "nombre": "Daga de Sombras",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 60,
+      "velocidad": 95,
+      "alcance": 40,
+      "durabilidad": 45,
+      "peso": 18,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 52,
+    "nombre": "Espada del Alma",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 110,
+      "velocidad": 55,
+      "alcance": 75,
+      "durabilidad": 50,
+      "peso": 50,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 53,
+    "nombre": "Lanza de Hueso",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 65,
+      "velocidad": 70,
+      "alcance": 85,
+      "durabilidad": 60,
+      "peso": 35,
+      "rareza": "Rara"
+    }
+  },
+  {
+    "id": 54,
+    "nombre": "Bastón de Rayo",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 100,
+      "velocidad": 45,
+      "alcance": 90,
+      "durabilidad": 35,
+      "peso": 40,
+      "rareza": "Legendaria"
+    }
+  },
+  {
+    "id": 55,
+    "nombre": "Hacha de Carnicero",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 95,
+      "velocidad": 50,
+      "alcance": 45,
+      "durabilidad": 80,
+      "peso": 70,
+      "rareza": "Épica"
+    }
+  },
+  {
+    "id": 56,
+    "nombre": "Espada del Destino",
+    "imagen": "assets/armas.png",
+    "atributos": {
+      "daño": 120,
+      "velocidad": 50,
+      "alcance": 80,
+      "durabilidad": 70,
+      "peso": 60,
+      "rareza": "Legendaria"
+    }
+  }
+]

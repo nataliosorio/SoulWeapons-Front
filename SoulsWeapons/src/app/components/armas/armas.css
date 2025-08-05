@@ -1,0 +1,46 @@
+
+
+/* Contenedor de las cards */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* gap: 1rem; */
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.6); /* Más oscuro para que combine con el fondo */
+  box-sizing: border-box;
+  width: 100%;
+  gap: 20px;
+
+}
+
+/* .wrapper {
+  min-height: 100vh;
+  padding-bottom: 2rem;
+} */
+
+.title {
+  font-size: 28px;
+  color: #ffbbbb;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+button {
+  padding: 8px 14px;
+  margin-top: 6px;
+  margin-right: 8px;
+  background: linear-gradient(to right, #7c0a02, #3a0d0d);
+  color: white;
+  border: 1px solid #aa0000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.4s ease;
+  box-shadow: 0 0 6px #300;
+}
+
+button:hover {
+  background: #b20000;
+  transform: scale(1.05);
+}
