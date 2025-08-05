@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Cards } from '../cards/cards';
 import { CommonModule } from '@angular/common';
 import cardsData from '../../../assets/data/cards.json';
 import { Router } from '@angular/router';
+import { Cards } from '../cards/cards';
 
 @Component({
   selector: 'app-armas',

@@ -28,6 +28,7 @@ export const routes: Routes = [
     path: 'armas',
     component: Armas
 },
+
 {
   path: '',
   component: Home,

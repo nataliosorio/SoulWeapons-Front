@@ -21,22 +21,21 @@
 
       <h3 class="title2">🧝‍♂️ Jugadores disponibles</h3>
       <table>
-        <!-- <tr>
-          <th>Nombre</th>
-          <th>Acción</th>
-        </tr> -->
-        <tr *ngFor="let player of availablePlayers">
-          <td>{{ player.nombre }}</td>
-           <td>
+        <tr *ngFor="let player of players">
+          <td>{{ player.name }}</td>
+          <td>
             <button (click)="addPlayer(player)">Agregar</button>
           </td>
         </tr>
       </table>
 
+
+
       <h3 class="title2">🛡 Jugadores seleccionados</h3>
       <ul>
-        <li *ngFor="let p of selectedPlayers">{{ p.nombre }}</li>
+        <li *ngFor="let p of selectedPlayers">{{ p.name }}</li>
       </ul>
+
     </div>
 
     <button class="start-btn" type="button" (click)="startGame()" [disabled]="selectedPlayers.length < playerCount">

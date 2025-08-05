@@ -2,7 +2,6 @@
 
 <div class="card-wrapper" (click)="flip = !flip" [class.flipped]="flip">
   <div class="card-inner">
-    <!-- Cara frontal -->
     <div class="card-front">
       <h2 class="card-title">{{ data.nombre }}</h2>
       <img [src]="data.imagen" alt="{{ data.nombre }}" class="card-img" />
@@ -13,7 +12,6 @@
       </div>
     </div>
 
-    <!-- Cara trasera -->
     <div class="card-back">
       <p style="padding: 1rem;">Dark Souls</p>
     </div>

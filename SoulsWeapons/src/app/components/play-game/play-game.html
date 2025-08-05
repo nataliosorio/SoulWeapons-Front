@@ -1,1 +1,61 @@
-<p>play-game works!</p>
+<div class="game-container">
+
+  <!-- Indicador de turno arriba -->
+  <div class="turn-indicator">
+    <div class="turn-arrow">➤</div>
+    <span>Turno de {{ currentTurnPlayer?.playerName }}</span>
+  </div>
+
+  <!-- Área central con cartas e input -->
+  <div class="game-board">
+    <div class="player-turn-indicator">
+      Turno de: <strong>{{ currentTurnPlayer.name }}</strong>
+    </div>
+
+
+   <div class="player-hand-container">
+
+  <div class="card" *ngFor="let card of cartasJugador">
+    <img [src]="card.image" alt="{{ card.name }}" />
+    <div class="card-content">
+      <h4>{{ card.name }}</h4>
+      <p><strong>Código:</strong> {{ card.Code }}</p>
+      <ul>
+        <li><strong>Daño:</strong> {{ card.damage }}</li>
+        <li><strong>Fuego:</strong> {{ card.fireDamage }}</li>
+        <li><strong>Eléctrico:</strong> {{ card.electricDamage }}</li>
+        <li><strong>Crítico:</strong> {{ card.crtiticalDamage }}</li>
+        <li><strong>Veneno:</strong> {{ card.poisionDamage }}</li>
+        <li><strong>Mágico:</strong> {{ card.magicDamage }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="response-input">
+      <input type="text" placeholder="Escribe tu respuesta..." [(ngModel)]="playerAtributte" />
+      <button (click)="submitResponse()">Enviar</button>
+    </div>
+  </div>
+
+  <!-- Jugadores distribuidos en círculo -->
+  <div class="players-container">
+   <div
+  class="player-card"
+  *ngFor="let player of gamePlayers; let i = index"
+  [style.left]="getPlayerPosition(i, gamePlayers.length).left"
+  [style.top]="getPlayerPosition(i, gamePlayers.length).top"
+>
+  <div class="player-info">
+    <h3 class="player-name">{{ player.playerName }}</h3>
+  </div>
+
+  <div class="card-count">
+    <span class="count">{{ player.cards.length }}</span> cartas
+  </div>
+</div>
+
+  </div>
+</div>

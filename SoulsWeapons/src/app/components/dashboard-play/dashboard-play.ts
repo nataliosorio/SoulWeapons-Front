@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import PlayerData from '../../../assets/data/players.json';
 import { HttpClient } from '@angular/common/http';
 import { Player } from './player.interface';
+import { General } from '../../services/general';
+import { GameData } from '../../services/game-data';
 
 
 @Component({
@@ -15,7 +17,8 @@ import { Player } from './player.interface';
   styleUrl: './dashboard-play.css'
 })
 export class DashboardPlay {
-
+  players: any[] = [];
+  gamePlayers: any[] = [];
    playerCount: number = 2;
 
    availablePlayers: Player[] = [];
@@ -24,12 +27,11 @@ selectedPlayers: Player[] = [];
   showAddForm: boolean = false;
   newPlayerName: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private general: General,  private gameDataService: GameData) {}
 
 ngOnInit(): void {
-  this.http.get<Player[]>('assets/data/players.json').subscribe((data) => {
-    this.availablePlayers = data;
-  });
+   this.getPlayers();
+
 }
 
   onPlayerCountChange() {
@@ -47,13 +49,14 @@ ngOnInit(): void {
 confirmAddNewPlayer() {
   const name = this.newPlayerName.trim();
 
-  const yaExiste = this.availablePlayers.some(p => p.nombre.toLowerCase() === name.toLowerCase());
+  const yaExiste = this.availablePlayers.some(p => p.name.toLowerCase() === name.toLowerCase());
 
   if (name && !yaExiste) {
     const nuevoJugador: Player = {
-      id: this.availablePlayers.length + 1, // o usa otro generador
-      nombre: name
+      id: this.availablePlayers.length + 1,
+      name: name // <-- antes era 'nombre'
     };
+
 
     this.availablePlayers.push(nuevoJugador);
     this.newPlayerName = '';
@@ -65,14 +68,22 @@ confirmAddNewPlayer() {
 
 
 startGame() {
-  const gameData = {
-    cantidad: this.playerCount,
-    jugadores: this.selectedPlayers
-  };
+  const jugadoresAEnviar = this.selectedPlayers.map(p => ({
+    id: p.id,
+    name: p.name
+  }));
 
-  localStorage.setItem('datosJuego', JSON.stringify(gameData));
-
-  this.router.navigate(['/playGame']);
+  this.general.post<any>('Room/CreateRoom', jugadoresAEnviar).subscribe({
+    next: (response) => {
+      this.gameDataService.setJugadores(response.data);
+      this.router.navigate(['/playGame']);
+      localStorage.setItem('roomId', response.data.roomId);
+    },
+    error: (err) => {
+      console.error('Error al crear la sala:', err);
+      alert('Ocurrió un error al crear la sala.');
+    }
+  });
 }
 
 
@@ -80,5 +91,17 @@ startGame() {
   viewArmas() {
     this.router.navigate(['/armas']);
   }
+
+
+  getPlayers() {
+  this.general.get<any>('Player/GetAll').subscribe({
+    next: (response) => {
+      this.players = response.data; // <<--- aquí accedemos al array real
+    },
+    error: (err) => {
+      console.error('Error al obtener jugadores:', err);
+    }
+  });
+}
 
 }
