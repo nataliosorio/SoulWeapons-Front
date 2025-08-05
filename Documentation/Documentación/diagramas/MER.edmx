@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="modulo.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="moduloStoreContainer">
+    <EntitySet Name="PersonSet" EntityType="modulo.Store.PersonSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConfigurationRatesSet" EntityType="modulo.Store.ConfigurationRatesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RolSet" EntityType="modulo.Store.RolSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet" EntityType="modulo.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClientSet" EntityType="modulo.Store.ClientSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RolUserSet" EntityType="modulo.Store.RolUserSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserPerson" Association="modulo.Store.UserPerson">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Person" EntitySet="PersonSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserClient" Association="modulo.Store.UserClient">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Client" EntitySet="ClientSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserRolUser" Association="modulo.Store.UserRolUser">
+      <End Role="RolUser" EntitySet="RolUserSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="RolRolUser" Association="modulo.Store.RolRolUser">
+      <End Role="Rol" EntitySet="RolSet" />
+      <End Role="RolUser" EntitySet="RolUserSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PersonSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Document" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Active" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConfigurationRatesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DurationApplied" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PersonId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VehicleUser_User_Id" Type="int" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PersonId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolUserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserPerson">
+    <End Role="User" Type="modulo.Store.UserSet" Multiplicity="*" />
+    <End Role="Person" Type="modulo.Store.PersonSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserClient">
+    <End Role="User" Type="modulo.Store.UserSet" Multiplicity="*" />
+    <End Role="Client" Type="modulo.Store.ClientSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Client_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRolUser">
+    <End Role="RolUser" Type="modulo.Store.RolUserSet" Multiplicity="*" />
+    <End Role="User" Type="modulo.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolUser">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RolRolUser">
+    <End Role="Rol" Type="modulo.Store.RolSet" Multiplicity="1" />
+    <End Role="RolUser" Type="modulo.Store.RolUserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolUser">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="modulo" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="moduloContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PersonSet" EntityType="modulo.Person" />
+          <EntitySet Name="ConfigurationRatesSet" EntityType="modulo.ConfigurationRates" />
+          <EntitySet Name="RolSet" EntityType="modulo.Rol" />
+          <EntitySet Name="UserSet" EntityType="modulo.User" />
+          <EntitySet Name="PlayerSet1" EntityType="modulo.Player" />
+          <AssociationSet Name="UserPerson" Association="modulo.UserPerson">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Person" EntitySet="PersonSet" />
+          </AssociationSet>
+          <EntitySet Name="RolUserSet" EntityType="modulo.RolUser" />
+          <AssociationSet Name="UserRolUser" Association="modulo.UserRolUser">
+            <End Role="RolUser" EntitySet="RolUserSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="RolRolUser" Association="modulo.RolRolUser">
+            <End Role="Rol" EntitySet="RolSet" />
+            <End Role="RolUser" EntitySet="RolUserSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClientPerson" Association="modulo.ClientPerson">
+            <End Role="Client" EntitySet="PlayerSet1" />
+            <End Role="Person" EntitySet="PersonSet" />
+          </AssociationSet>
+          <EntitySet Name="CardsSet" EntityType="modulo.Cards" />
+          <EntitySet Name="GameSet" EntityType="modulo.Game" />
+          <EntitySet Name="GamePlayerSet" EntityType="modulo.GamePlayer" />
+          <EntitySet Name="RoundSet" EntityType="modulo.Round" />
+          <EntitySet Name="RoundScoreSet" EntityType="modulo.RoundScore" />
+          <EntitySet Name="PlayerDeckSet" EntityType="modulo.PlayerDeck" />
+          <AssociationSet Name="PlayerGame" Association="modulo.PlayerGame">
+            <End Role="Player" EntitySet="PlayerSet1" />
+            <End Role="Game" EntitySet="GameSet" />
+          </AssociationSet>
+          <AssociationSet Name="GameGamePlayer" Association="modulo.GameGamePlayer">
+            <End Role="Game" EntitySet="GameSet" />
+            <End Role="GamePlayer" EntitySet="GamePlayerSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlayerGamePlayer" Association="modulo.PlayerGamePlayer">
+            <End Role="Player" EntitySet="PlayerSet1" />
+            <End Role="GamePlayer" EntitySet="GamePlayerSet" />
+          </AssociationSet>
+          <AssociationSet Name="GamePlayerPlayerDeck" Association="modulo.GamePlayerPlayerDeck">
+            <End Role="GamePlayer" EntitySet="GamePlayerSet" />
+            <End Role="PlayerDeck" EntitySet="PlayerDeckSet" />
+          </AssociationSet>
+          <AssociationSet Name="CardsPlayerDeck" Association="modulo.CardsPlayerDeck">
+            <End Role="Cards" EntitySet="CardsSet" />
+            <End Role="PlayerDeck" EntitySet="PlayerDeckSet" />
+          </AssociationSet>
+          <AssociationSet Name="GameRound" Association="modulo.GameRound">
+            <End Role="Game" EntitySet="GameSet" />
+            <End Role="Round" EntitySet="RoundSet" />
+          </AssociationSet>
+          <AssociationSet Name="RoundRoundScore" Association="modulo.RoundRoundScore">
+            <End Role="Round" EntitySet="RoundSet" />
+            <End Role="RoundScore" EntitySet="RoundScoreSet" />
+          </AssociationSet>
+          <AssociationSet Name="GamePlayerRoundScore" Association="modulo.GamePlayerRoundScore">
+            <End Role="GamePlayer" EntitySet="GamePlayerSet" />
+            <End Role="RoundScore" EntitySet="RoundScoreSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Document" Type="String" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="modulo.UserPerson" FromRole="Person" ToRole="User" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Age" Type="String" Nullable="false" />
+          <Property Name="Active" Type="String" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="modulo.ClientPerson" FromRole="Person" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="ConfigurationRates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="String" Nullable="false" />
+          <Property Name="DurationApplied" Type="String" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" />
+          <NavigationProperty Name="RolUser" Relationship="modulo.RolRolUser" FromRole="Rol" ToRole="RolUser" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="modulo.UserPerson" FromRole="User" ToRole="Person" />
+          <Property Name="PersonId" Type="String" Nullable="false" />
+          <NavigationProperty Name="RolUser" Relationship="modulo.UserRolUser" FromRole="User" ToRole="RolUser" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PersonId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="modulo.ClientPerson" FromRole="Client" ToRole="Person" />
+          <NavigationProperty Name="Game" Relationship="modulo.PlayerGame" FromRole="Player" ToRole="Game" />
+          <NavigationProperty Name="GamePlayer" Relationship="modulo.PlayerGamePlayer" FromRole="Player" ToRole="GamePlayer" />
+        </EntityType>
+        <Association Name="UserPerson">
+          <End Type="modulo.User" Role="User" Multiplicity="1" />
+          <End Type="modulo.Person" Role="Person" Multiplicity="1" />
+        </Association>
+        <EntityType Name="RolUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="modulo.UserRolUser" FromRole="RolUser" ToRole="User" />
+          <NavigationProperty Name="Rol" Relationship="modulo.RolRolUser" FromRole="RolUser" ToRole="Rol" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="UserRolUser">
+          <End Type="modulo.RolUser" Role="RolUser" Multiplicity="*" />
+          <End Type="modulo.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="RolRolUser">
+          <End Type="modulo.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="modulo.RolUser" Role="RolUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolUser">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClientPerson">
+          <End Type="modulo.Player" Role="Client" Multiplicity="1" />
+          <End Type="modulo.Person" Role="Person" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Damage" Type="String" Nullable="false" />
+          <Property Name="FD" Type="String" Nullable="false" />
+          <Property Name="ED" Type="String" Nullable="false" />
+          <Property Name="CD" Type="String" Nullable="false" />
+          <Property Name="PD" Type="String" Nullable="false" />
+          <Property Name="MD" Type="String" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" />
+          <NavigationProperty Name="PlayerDeck" Relationship="modulo.CardsPlayerDeck" FromRole="Cards" ToRole="PlayerDeck" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerId" Type="String" Nullable="false" />
+          <Property Name="PlayersCount" Type="String" Nullable="false" />
+          <Property Name="RoundCount" Type="String" Nullable="false" />
+          <Property Name="State" Type="String" Nullable="false" />
+          <Property Name="CurrentRound" Type="String" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="modulo.PlayerGame" FromRole="Game" ToRole="Player" />
+          <NavigationProperty Name="GamePlayer" Relationship="modulo.GameGamePlayer" FromRole="Game" ToRole="GamePlayer" />
+          <NavigationProperty Name="Round" Relationship="modulo.GameRound" FromRole="Game" ToRole="Round" />
+        </EntityType>
+        <EntityType Name="GamePlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameId" Type="String" Nullable="false" />
+          <Property Name="PlayerId" Type="String" Nullable="false" />
+          <Property Name="TurnOrder" Type="String" Nullable="false" />
+          <Property Name="TotalScore" Type="String" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="modulo.GameGamePlayer" FromRole="GamePlayer" ToRole="Game" />
+          <NavigationProperty Name="Player" Relationship="modulo.PlayerGamePlayer" FromRole="GamePlayer" ToRole="Player" />
+          <NavigationProperty Name="PlayerDeck" Relationship="modulo.GamePlayerPlayerDeck" FromRole="GamePlayer" ToRole="PlayerDeck" />
+          <NavigationProperty Name="RoundScore" Relationship="modulo.GamePlayerRoundScore" FromRole="GamePlayer" ToRole="RoundScore" />
+        </EntityType>
+        <EntityType Name="Round">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameId" Type="String" Nullable="false" />
+          <Property Name="RoundNumber" Type="String" Nullable="false" />
+          <Property Name="ComparedAttr" Type="String" Nullable="false" />
+          <Property Name="Winner" Type="String" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="modulo.GameRound" FromRole="Round" ToRole="Game" />
+          <NavigationProperty Name="RoundScore" Relationship="modulo.RoundRoundScore" FromRole="Round" ToRole="RoundScore" />
+        </EntityType>
+        <EntityType Name="RoundScore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoundId" Type="String" Nullable="false" />
+          <Property Name="GamePlayerId" Type="String" Nullable="false" />
+          <Property Name="Score" Type="String" Nullable="false" />
+          <NavigationProperty Name="Round" Relationship="modulo.RoundRoundScore" FromRole="RoundScore" ToRole="Round" />
+          <NavigationProperty Name="GamePlayer" Relationship="modulo.GamePlayerRoundScore" FromRole="RoundScore" ToRole="GamePlayer" />
+        </EntityType>
+        <EntityType Name="PlayerDeck">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Used" Type="String" Nullable="false" />
+          <NavigationProperty Name="GamePlayer" Relationship="modulo.GamePlayerPlayerDeck" FromRole="PlayerDeck" ToRole="GamePlayer" />
+          <Property Name="GamePlayerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="modulo.CardsPlayerDeck" FromRole="PlayerDeck" ToRole="Cards" />
+          <Property Name="CardsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PlayerGame">
+          <End Type="modulo.Player" Role="Player" Multiplicity="1" />
+          <End Type="modulo.Game" Role="Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Game">
+              <PropertyRef Name="PlayerId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GameGamePlayer">
+          <End Type="modulo.Game" Role="Game" Multiplicity="1" />
+          <End Type="modulo.GamePlayer" Role="GamePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GamePlayer">
+              <PropertyRef Name="GameId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlayerGamePlayer">
+          <End Type="modulo.Player" Role="Player" Multiplicity="1" />
+          <End Type="modulo.GamePlayer" Role="GamePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GamePlayer">
+              <PropertyRef Name="PlayerId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GamePlayerPlayerDeck">
+          <End Type="modulo.GamePlayer" Role="GamePlayer" Multiplicity="1" />
+          <End Type="modulo.PlayerDeck" Role="PlayerDeck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GamePlayer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerDeck">
+              <PropertyRef Name="GamePlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CardsPlayerDeck">
+          <End Type="modulo.Cards" Role="Cards" Multiplicity="1" />
+          <End Type="modulo.PlayerDeck" Role="PlayerDeck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerDeck">
+              <PropertyRef Name="CardsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GameRound">
+          <End Type="modulo.Game" Role="Game" Multiplicity="1" />
+          <End Type="modulo.Round" Role="Round" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Round">
+              <PropertyRef Name="GameId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoundRoundScore">
+          <End Type="modulo.Round" Role="Round" Multiplicity="1" />
+          <End Type="modulo.RoundScore" Role="RoundScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Round">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoundScore">
+              <PropertyRef Name="RoundId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GamePlayerRoundScore">
+          <End Type="modulo.GamePlayer" Role="GamePlayer" Multiplicity="1" />
+          <End Type="modulo.RoundScore" Role="RoundScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GamePlayer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoundScore">
+              <PropertyRef Name="GamePlayerId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="moduloStoreContainer" CdmEntityContainer="moduloContainer">
+    <EntitySetMapping Name="PersonSet">
+      <EntityTypeMapping TypeName="IsTypeOf(modulo.Person)">
+        <MappingFragment StoreEntitySet="PersonSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Document" ColumnName="Document" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConfigurationRatesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(modulo.ConfigurationRates)">
+        <MappingFragment StoreEntitySet="ConfigurationRatesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DurationApplied" ColumnName="DurationApplied" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolSet">
+      <EntityTypeMapping TypeName="IsTypeOf(modulo.Rol)">
+        <MappingFragment StoreEntitySet="RolSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(modulo.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlayerSet1">
+      <EntityTypeMapping TypeName="IsTypeOf(modulo.Player)">
+        <MappingFragment StoreEntitySet="ClientSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolUserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(modulo.RolUser)">
+        <MappingFragment StoreEntitySet="RolUserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserPerson" TypeName="modulo.UserPerson" StoreEntitySet="UserSet">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserRolUser" TypeName="modulo.UserRolUser" StoreEntitySet="RolUserSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="RolUser">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb638230928e49a9a0320bbe44d40e13" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="modulo.Person" Width="1.5" PointX="7.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="modulo.ConfigurationRates" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="modulo.Rol" Width="1.5" PointX="0.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="modulo.User" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="modulo.Player" Width="1.5" PointX="10" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="modulo.RolUser" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="modulo.UserPerson" ManuallyRouted="false" />
+        <AssociationConnector Association="modulo.UserRolUser" ManuallyRouted="false" />
+        <AssociationConnector Association="modulo.RolRolUser" ManuallyRouted="false" />
+        <AssociationConnector Association="modulo.ClientPerson" />
+        <EntityTypeShape EntityType="modulo.Cards" Width="1.5" PointX="21.625" PointY="14.125" />
+        <EntityTypeShape EntityType="modulo.Game" Width="1.5" PointX="13.125" PointY="12.375" />
+        <EntityTypeShape EntityType="modulo.GamePlayer" Width="1.5" PointX="15.75" PointY="14.625" />
+        <EntityTypeShape EntityType="modulo.Round" Width="1.5" PointX="15.375" PointY="11.75" />
+        <EntityTypeShape EntityType="modulo.RoundScore" Width="1.5" PointX="17.75" PointY="11.875" />
+        <EntityTypeShape EntityType="modulo.PlayerDeck" Width="1.5" PointX="19.125" PointY="14.625" />
+        <AssociationConnector Association="modulo.PlayerGame" />
+        <AssociationConnector Association="modulo.GameGamePlayer" />
+        <AssociationConnector Association="modulo.PlayerGamePlayer" />
+        <AssociationConnector Association="modulo.GamePlayerPlayerDeck" />
+        <AssociationConnector Association="modulo.CardsPlayerDeck" />
+        <AssociationConnector Association="modulo.GameRound" />
+        <AssociationConnector Association="modulo.RoundRoundScore" />
+        <AssociationConnector Association="modulo.GamePlayerRoundScore" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,91 @@
+@startuml
+title Class Diagram – Dark Souls Card Game (without PlayerCard)
+
+'================== Person & User ==================
+class Person {
+  +id: int
+  +name: string
+  +email: string
+  +birthDate: date
+}
+
+class User {
+  +id: int
+  +username: string
+  +passwordHash: string
+  +isAdmin: bool
+}
+
+Person "1" -- "1" User : represents
+
+'================== Card ==================
+class Card {
+  +id: int
+  +name: string
+  +ND: int  ' Normal Damage
+  +FD: int  ' Fire Damage
+  +ED: int  ' Electric Damage
+  +CD: int  ' Critical Damage
+  +PD: int  ' Poison Damage
+  +TD: int  ' Toxic Damage
+  +imageUrl: string
+}
+
+'================== Game ==================
+class Game {
+  +id: int
+  +adminId: int
+  +playerCount: int
+  +roundCount: int
+  +state: string
+  +currentAttr: string
+}
+
+User "1" -- "0..*" Game : creates
+
+'================== GamePlayer ==================
+class GamePlayer {
+  +id: int
+  +gameId: int
+  +userId: int
+  +turnOrder: int
+  +totalScore: int
+}
+
+Game "1" -- "2..7" GamePlayer
+User "1" -- "0..*" GamePlayer
+
+'================== PlayerDeck ==================
+class PlayerDeck {
+  +id: int
+  +gamePlayerId: int
+  +cardId: int
+  +used: bool
+}
+
+GamePlayer "1" -- "0..8" PlayerDeck
+Card "1" -- "0..*" PlayerDeck
+
+'================== Round ==================
+class Round {
+  +id: int
+  +gameId: int
+  +roundNumber: int
+  +comparedAttr: string
+  +winnerId: int
+}
+
+Game "1" -- "1..*" Round
+User "1" -- "0..*" Round : wins
+
+'================== RoundScore ==================
+class RoundScore {
+  +id: int
+  +roundId: int
+  +userId: int
+  +score: int
+}
+
+Round "1" -- "0..*" RoundScore
+User "1" -- "0..*" RoundScore
+@enduml
